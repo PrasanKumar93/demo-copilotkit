@@ -1,0 +1,63 @@
+// ===========================================
+// TYPOGRAPHY VARIABLES
+// Material Design 3 Scale - All CSS Custom Properties
+// ===========================================
+
+:root {
+  // -----------------------------------------
+  // FONT SIZES
+  // -----------------------------------------
+  --font-size-xs: 0.6875rem; // 11px - Label small
+  --font-size-sm: 0.75rem; // 12px - Label medium
+  --font-size-md: 0.875rem; // 14px - Body small
+  --font-size-base: 1rem; // 16px - Body medium
+  --font-size-lg: 1.125rem; // 18px - Body large
+  --font-size-xl: 1.375rem; // 22px - Title medium
+  --font-size-2xl: 1.5rem; // 24px - Title large
+  --font-size-3xl: 1.75rem; // 28px - Headline small
+  --font-size-4xl: 2rem; // 32px - Headline medium
+  --font-size-5xl: 2.25rem; // 36px - Headline large
+  --font-size-6xl: 2.8125rem; // 45px - Display small
+  --font-size-7xl: 3.5625rem; // 57px - Display medium
+  --font-size-8xl: 4rem; // 64px - Display large
+
+  // -----------------------------------------
+  // FONT WEIGHTS
+  // -----------------------------------------
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  // -----------------------------------------
+  // LINE HEIGHTS
+  // -----------------------------------------
+  --line-height-none: 1;
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  // -----------------------------------------
+  // LETTER SPACING
+  // -----------------------------------------
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+
+  // -----------------------------------------
+  // FONT FAMILIES
+  // -----------------------------------------
+  --font-family-primary: "Space Grotesk", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  --font-family-mono: "Space Mono", "Fira Code", monospace;
+}

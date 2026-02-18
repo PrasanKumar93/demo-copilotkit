@@ -1,0 +1,47 @@
+@use "../styles/variables" as *;
+@use "../styles/typography";
+
+// ===========================================
+// Box sizing (universally useful, not covered by CssBaseline)
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Allow percentage-based heights
+html,
+body {
+  height: 100%;
+}
+
+// ===========================================
+
+// Base styles
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-tertiary-900);
+  background-color: var(--color-tertiary-50);
+}
+
+// ===========================================
+// App Layout Structure
+// ===========================================
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

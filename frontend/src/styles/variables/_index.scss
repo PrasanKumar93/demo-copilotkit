@@ -1,0 +1,10 @@
+// ===========================================
+// VARIABLES - Index (Entry Point)
+// ===========================================
+// This file imports all CSS Custom Property definitions.
+// Usage: @use "styles/variables" or @import "styles/variables"
+
+// Import all variable files to ensure :root definitions are loaded
+@import "colors";
+@import "fonts";
+@import "spacing";

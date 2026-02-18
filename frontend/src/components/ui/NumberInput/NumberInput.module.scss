@@ -1,0 +1,118 @@
+.number-input-wrapper {
+  width: 100%;
+
+  // ===========================================
+  // TYPOGRAPHY OVERRIDES
+  // ===========================================
+
+  // Label styling
+  :global(.MuiInputLabel-root) {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+
+    &:global(.Mui-focused) {
+      color: var(--color-primary-main);
+    }
+
+    &:global(.Mui-error) {
+      color: var(--color-error-main);
+    }
+
+    &:global(.Mui-disabled) {
+      color: var(--color-text-disabled);
+    }
+  }
+
+  // ===========================================
+  // COLOR OVERRIDES
+  // ===========================================
+
+  // Outlined input styling
+  :global(.MuiOutlinedInput-root) {
+    font-family: var(--font-family-primary);
+    color: var(--color-text-primary);
+    background-color: var(--color-background-default);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+
+    :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: var(--color-grey-300);
+    }
+
+    &:hover :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: var(--color-grey-500);
+    }
+
+    &:global(.Mui-focused) :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: var(--color-primary-main);
+    }
+
+    &:global(.Mui-error) :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: var(--color-error-main);
+    }
+
+    &:global(.Mui-disabled) {
+      background-color: var(--color-grey-100);
+
+      :global(.MuiOutlinedInput-notchedOutline) {
+        border-color: var(--color-grey-200);
+      }
+    }
+  }
+
+  // Input text
+  :global(.MuiOutlinedInput-input) {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    padding: var(--spacing-3) var(--spacing-3); // 12px vertical & horizontal
+    height: auto;
+
+    &::placeholder {
+      color: var(--color-text-disabled);
+      opacity: 1;
+    }
+
+    &:disabled {
+      color: var(--color-text-disabled);
+      -webkit-text-fill-color: var(--color-text-disabled);
+    }
+  }
+
+  // Small size variant
+  :global(.MuiInputBase-sizeSmall) {
+    :global(.MuiOutlinedInput-input) {
+      padding: var(--spacing-2) var(--spacing-3); // 8px vertical, 12px horizontal
+      font-size: var(--font-size-md); // 14px
+    }
+  }
+
+  // Helper text
+  :global(.MuiFormHelperText-root) {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-secondary);
+
+    &:global(.Mui-error) {
+      color: var(--color-error-main);
+    }
+  }
+
+  // Hide number input spinners for cleaner look
+  :global(.MuiOutlinedInput-input[type="number"]) {
+    appearance: textfield;
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,248 @@
+// ===========================================
+// TYPOGRAPHY STYLES
+// Material Design 3 Inspired Typography System
+// ===========================================
+
+// Base path for font files (SCSS variable needed for @font-face url interpolation)
+$base-path: "/assets" !default;
+
+// ===========================================
+// @FONT-FACE DECLARATIONS
+// ===========================================
+
+/* Space Grotesk Variable Font */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("#{$base-path}/fonts/space-grotesk/SpaceGrotesk-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Static fonts are fallbacks for specific weights */
+/* Space Grotesk Light */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("#{$base-path}/fonts/space-grotesk/static/SpaceGrotesk-Light.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Space Grotesk Regular */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("#{$base-path}/fonts/space-grotesk/static/SpaceGrotesk-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Space Grotesk Medium */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("#{$base-path}/fonts/space-grotesk/static/SpaceGrotesk-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Space Grotesk SemiBold */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("#{$base-path}/fonts/space-grotesk/static/SpaceGrotesk-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Space Grotesk Bold */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("#{$base-path}/fonts/space-grotesk/static/SpaceGrotesk-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Space Mono Regular */
+@font-face {
+  font-family: "Space Mono";
+  src: url("#{$base-path}/fonts/space-mono/SpaceMono-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Space Mono Italic */
+@font-face {
+  font-family: "Space Mono";
+  src: url("#{$base-path}/fonts/space-mono/SpaceMono-Italic.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Space Mono Bold */
+@font-face {
+  font-family: "Space Mono";
+  src: url("#{$base-path}/fonts/space-mono/SpaceMono-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Space Mono Bold Italic */
+@font-face {
+  font-family: "Space Mono";
+  src: url("#{$base-path}/fonts/space-mono/SpaceMono-BoldItalic.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+// ===========================================
+// BASE TYPOGRAPHY RESET
+// ===========================================
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ===========================================
+// FONT WEIGHT CLASSES (with italic variants)
+// ===========================================
+.font-thin {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-thin);
+}
+
+.font-thin-italic {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-thin);
+  font-style: italic;
+}
+
+.font-extralight {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-extralight);
+}
+
+.font-extralight-italic {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-extralight);
+  font-style: italic;
+}
+
+.font-light {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-light);
+}
+
+.font-light-italic {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-light);
+  font-style: italic;
+}
+
+.font-regular {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+}
+
+.font-regular-italic {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-style: italic;
+}
+
+.font-regular-code {
+  font-family: var(--font-family-mono);
+  font-weight: var(--font-weight-regular);
+}
+
+.font-regular-code-italic {
+  font-family: var(--font-family-mono);
+  font-weight: var(--font-weight-regular);
+  font-style: italic;
+}
+
+.font-medium {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.font-medium-italic {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-style: italic;
+}
+
+.font-semibold {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-semibold-italic {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-semibold);
+  font-style: italic;
+}
+
+.font-bold {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.font-bold-italic {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+}
+
+.font-bold-code {
+  font-family: var(--font-family-mono);
+  font-weight: var(--font-weight-bold);
+}
+
+.font-bold-code-italic {
+  font-family: var(--font-family-mono);
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+}
+
+.font-extrabold {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.font-extrabold-italic {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-extrabold);
+  font-style: italic;
+}
+
+.font-black {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-black);
+}
+
+.font-black-italic {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-black);
+  font-style: italic;
+}

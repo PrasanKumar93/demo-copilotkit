@@ -1,0 +1,113 @@
+// ===========================================
+// HEADER STYLES
+// ===========================================
+
+.header {
+  flex-shrink: 0;
+  z-index: 100;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-900) 0%,
+    var(--color-primary-800) 50%,
+    var(--color-primary-700) 100%
+  );
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--spacing-2) var(--spacing-6);
+  }
+
+  // -----------------------------------------
+  // LOGO
+  // -----------------------------------------
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    text-decoration: none;
+  }
+
+  .logoIcon {
+    font-size: var(--font-size-3xl);
+    color: var(--color-secondary-400);
+    text-shadow: 0 0 12px rgba(255, 167, 38, 0.4);
+  }
+
+  .logoText {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  // -----------------------------------------
+  // NAVIGATION
+  // -----------------------------------------
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+  }
+
+  .navLink {
+    position: relative;
+    padding: var(--spacing-2) var(--spacing-4);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary-100);
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: var(--color-secondary-400);
+      border-radius: var(--radius-full);
+      transform: translateX(-50%);
+      transition: width var(--transition-base);
+    }
+
+    &:hover {
+      color: var(--color-white);
+      background-color: rgba(255, 255, 255, 0.1);
+
+      &::after {
+        width: 60%;
+      }
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // -----------------------------------------
+  // RESPONSIVE
+  // -----------------------------------------
+  @media (max-width: 640px) {
+    .container {
+      padding: var(--spacing-2) var(--spacing-4);
+    }
+
+    .logoText {
+      font-size: var(--font-size-lg);
+    }
+
+    .navLink {
+      padding: var(--spacing-2) var(--spacing-3);
+      font-size: var(--font-size-sm);
+    }
+  }
+}

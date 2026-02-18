@@ -1,0 +1,25 @@
+// ===========================================
+// NEW STUDENT PAGE STYLES
+// ===========================================
+
+@use "@/styles/variables" as *;
+
+.page {
+  min-height: 100vh;
+  padding: var(--spacing-6) var(--spacing-4);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-50) 0%,
+    var(--color-background-default) 50%,
+    var(--color-secondary-50) 100%
+  );
+
+  @media (max-width: 768px) {
+    padding: var(--spacing-4) var(--spacing-2);
+  }
+
+  @media (max-width: 480px) {
+    padding: 0;
+    background: var(--color-background-default);
+  }
+}

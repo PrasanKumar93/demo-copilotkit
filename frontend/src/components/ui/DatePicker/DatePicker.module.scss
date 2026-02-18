@@ -1,0 +1,262 @@
+.date-picker-wrapper {
+  width: 100%;
+
+  // ===========================================
+  // TYPOGRAPHY OVERRIDES
+  // ===========================================
+
+  // Label styling
+  :global(.MuiInputLabel-root) {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+
+    &:global(.Mui-focused) {
+      color: var(--color-primary-main);
+    }
+
+    &:global(.Mui-error) {
+      color: var(--color-error-main);
+    }
+
+    &:global(.Mui-disabled) {
+      color: var(--color-text-disabled);
+    }
+  }
+
+  // ===========================================
+  // COLOR OVERRIDES
+  // ===========================================
+
+  // Outlined input styling
+  :global(.MuiOutlinedInput-root) {
+    font-family: var(--font-family-primary);
+    color: var(--color-text-primary);
+    background-color: var(--color-background-default);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+
+    // Remove extra padding MUI adds for end adornment
+    &:global(.MuiInputBase-adornedEnd) {
+      padding-right: var(--spacing-1); // Reduce from MUI default 14px
+    }
+
+    :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: var(--color-grey-300);
+    }
+
+    &:hover :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: var(--color-grey-500);
+    }
+
+    &:global(.Mui-focused) :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: var(--color-primary-main);
+    }
+
+    &:global(.Mui-error) :global(.MuiOutlinedInput-notchedOutline) {
+      border-color: var(--color-error-main);
+    }
+
+    &:global(.Mui-disabled) {
+      background-color: var(--color-grey-100);
+
+      :global(.MuiOutlinedInput-notchedOutline) {
+        border-color: var(--color-grey-200);
+      }
+    }
+  }
+
+  // Input text
+  :global(.MuiOutlinedInput-input) {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    padding: var(--spacing-3) var(--spacing-3); // 12px vertical & horizontal
+    height: auto;
+
+    &::placeholder {
+      color: var(--color-text-disabled);
+      opacity: 1;
+    }
+
+    &:disabled {
+      color: var(--color-text-disabled);
+      -webkit-text-fill-color: var(--color-text-disabled);
+    }
+  }
+
+  // Small size variant
+  :global(.MuiInputBase-sizeSmall) {
+    :global(.MuiOutlinedInput-input) {
+      padding: var(--spacing-2) var(--spacing-3); // 8px vertical, 12px horizontal
+      font-size: var(--font-size-md); // 14px
+    }
+  }
+
+  // Calendar icon button - sized to match input height
+  :global(.MuiInputAdornment-root) {
+    :global(.MuiIconButton-root) {
+      color: var(--color-text-secondary);
+      padding: var(--spacing-1); // Minimal padding to match input height
+      margin-right: var(--spacing-1);
+
+      &:hover {
+        background-color: var(--color-grey-100);
+      }
+
+      &:disabled {
+        color: var(--color-text-disabled);
+      }
+    }
+  }
+
+  // Small size variant - adjust icon button
+  :global(.MuiInputBase-sizeSmall) {
+    :global(.MuiInputAdornment-root) {
+      :global(.MuiIconButton-root) {
+        padding: 2px; // Even smaller padding for small size
+
+        :global(.MuiSvgIcon-root) {
+          font-size: 1rem; // 16px icon for small variant
+        }
+      }
+    }
+  }
+
+  // Helper text
+  :global(.MuiFormHelperText-root) {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-secondary);
+
+    &:global(.Mui-error) {
+      color: var(--color-error-main);
+    }
+  }
+}
+
+// ===========================================
+// CALENDAR POPUP (rendered in portal, needs global scope)
+// Note: These are truly global as MUI renders the calendar in a portal outside the component
+// ===========================================
+:global(.MuiDateCalendar-root) {
+  font-family: var(--font-family-primary);
+  background-color: var(--color-background-paper);
+  color: var(--color-text-primary);
+}
+
+// Calendar header
+:global(.MuiPickersCalendarHeader-root) {
+  font-family: var(--font-family-primary);
+  color: var(--color-text-primary);
+}
+
+:global(.MuiPickersCalendarHeader-label) {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+// Navigation arrows
+:global(.MuiPickersArrowSwitcher-button) {
+  color: var(--color-text-secondary);
+
+  &:hover {
+    background-color: var(--color-grey-100);
+  }
+
+  &:disabled {
+    color: var(--color-text-disabled);
+  }
+}
+
+// Day of week headers
+:global(.MuiDayCalendar-weekDayLabel) {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+// Day cells
+:global(.MuiPickersDay-root) {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  background-color: transparent;
+
+  &:hover {
+    background-color: var(--color-grey-100);
+  }
+
+  &:global(.Mui-selected) {
+    background-color: var(--color-primary-main);
+    color: var(--color-primary-contrast);
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  &:global(.MuiPickersDay-today) {
+    border-color: var(--color-primary-main);
+  }
+
+  &:disabled {
+    color: var(--color-text-disabled);
+  }
+}
+
+// Year picker
+:global(.MuiYearCalendar-root) {
+  :global(.MuiPickersYear-yearButton) {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-md);
+    color: var(--color-text-primary);
+
+    &:hover {
+      background-color: var(--color-grey-100);
+    }
+
+    &:global(.Mui-selected) {
+      background-color: var(--color-primary-main);
+      color: var(--color-primary-contrast);
+    }
+
+    &:disabled {
+      color: var(--color-text-disabled);
+    }
+  }
+}
+
+// Month picker
+:global(.MuiMonthCalendar-root) {
+  :global(.MuiPickersMonth-monthButton) {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-md);
+    color: var(--color-text-primary);
+
+    &:hover {
+      background-color: var(--color-grey-100);
+    }
+
+    &:global(.Mui-selected) {
+      background-color: var(--color-primary-main);
+      color: var(--color-primary-contrast);
+    }
+
+    &:disabled {
+      color: var(--color-text-disabled);
+    }
+  }
+}
+
+// Popup paper
+:global(.MuiPickersPopper-paper) {
+  background-color: var(--color-background-paper);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}

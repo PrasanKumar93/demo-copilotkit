@@ -1,0 +1,207 @@
+# Create Student API
+
+Creates a new student record in the database.
+
+---
+
+## Endpoint
+
+```
+POST /api/createStudent
+```
+
+---
+
+## Headers
+
+| Header         | Value              | Required |
+| -------------- | ------------------ | -------- |
+| `Content-Type` | `application/json` | Yes      |
+
+---
+
+## Request Body
+
+| Field             | Type   | Required | Description                     |
+| ----------------- | ------ | -------- | ------------------------------- |
+| `firstName`       | string | Yes      | Student's first name            |
+| `lastName`        | string | Yes      | Student's last name             |
+| `email`           | string | Yes      | Valid email address             |
+| `dateOfBirth`     | string | Yes      | Date in ISO format (YYYY-MM-DD) |
+| `studentId`       | string | Yes      | Unique student identifier       |
+| `phone`           | string | Yes      | Phone number (min 10 digits)    |
+| `address`         | object | Yes      | Student's address               |
+| `address.street`  | string | Yes      | Street address                  |
+| `address.city`    | string | Yes      | City name                       |
+| `address.state`   | string | Yes      | State name                      |
+| `address.zipCode` | string | Yes      | Zip code (min 5 characters)     |
+| `address.country` | string | No       | Country (defaults to "USA")     |
+| `enrollmentDate`  | string | Yes      | Enrollment date in ISO format   |
+| `course`          | string | Yes      | Course name                     |
+| `department`      | string | Yes      | Department name                 |
+| `year`            | number | Yes      | Year of study (1-6)             |
+| `guardianName`    | string | No       | Guardian's name                 |
+| `guardianPhone`   | string | No       | Guardian's phone number         |
+
+---
+
+## Sample Request
+
+```bash
+curl -X POST http://localhost:3000/api/createStudent \
+  -H "Content-Type: application/json" \
+  -d '{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@university.edu",
+    "dateOfBirth": "2000-05-15",
+    "studentId": "STU-2024-001",
+    "phone": "1234567890",
+    "address": {
+      "street": "123 College Ave",
+      "city": "Boston",
+      "state": "MA",
+      "zipCode": "02101",
+      "country": "USA"
+    },
+    "enrollmentDate": "2024-09-01",
+    "course": "Computer Science",
+    "department": "Engineering",
+    "year": 1,
+    "guardianName": "Jane Doe",
+    "guardianPhone": "0987654321"
+  }'
+```
+
+---
+
+## Success Response
+
+**Status Code:** `200 OK`
+
+```json
+{
+  "success": true,
+  "data": {
+    "_id": "6761a2b3c4d5e6f7g8h9i0j1",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@university.edu",
+    "dateOfBirth": "2000-05-15T00:00:00.000Z",
+    "studentId": "STU-2024-001",
+    "phone": "1234567890",
+    "address": {
+      "street": "123 College Ave",
+      "city": "Boston",
+      "state": "MA",
+      "zipCode": "02101",
+      "country": "USA"
+    },
+    "enrollmentDate": "2024-09-01T00:00:00.000Z",
+    "course": "Computer Science",
+    "department": "Engineering",
+    "year": 1,
+    "guardianName": "Jane Doe",
+    "guardianPhone": "0987654321",
+    "createdAt": "2024-12-18T10:30:00.000Z",
+    "updatedAt": "2024-12-18T10:30:00.000Z"
+  }
+}
+```
+
+---
+
+## Error Responses
+
+### Validation Error
+
+**Status Code:** `500 Internal Server Error`
+
+Missing required field:
+
+```json
+{
+  "success": false,
+  "error": "Validation error: First name is required"
+}
+```
+
+Invalid email format:
+
+```json
+{
+  "success": false,
+  "error": "Validation error: Invalid email format"
+}
+```
+
+Invalid year value:
+
+```json
+{
+  "success": false,
+  "error": "Validation error: Number must be less than or equal to 6"
+}
+```
+
+### Database Error
+
+**Status Code:** `500 Internal Server Error`
+
+```json
+{
+  "success": false,
+  "error": "Database connection failed"
+}
+```
+
+---
+
+## Validation Rules
+
+| Field         | Rules                            |
+| ------------- | -------------------------------- |
+| `firstName`   | Non-empty string                 |
+| `lastName`    | Non-empty string                 |
+| `email`       | Valid email format               |
+| `dateOfBirth` | Valid date (coerced from string) |
+| `studentId`   | Non-empty string                 |
+| `phone`       | Minimum 10 characters            |
+| `zipCode`     | Minimum 5 characters             |
+| `year`        | Integer between 1 and 6          |
+
+---
+
+## Example: Minimal Request
+
+Only required fields:
+
+```json
+{
+  "firstName": "Alice",
+  "lastName": "Smith",
+  "email": "alice.smith@university.edu",
+  "dateOfBirth": "2001-03-20",
+  "studentId": "STU-2024-002",
+  "phone": "5551234567",
+  "address": {
+    "street": "456 University Blvd",
+    "city": "Cambridge",
+    "state": "MA",
+    "zipCode": "02139"
+  },
+  "enrollmentDate": "2024-09-01",
+  "course": "Data Science",
+  "department": "Computer Science",
+  "year": 2
+}
+```
+
+---
+
+## Notes
+
+- The `_id` field is auto-generated by MongoDB
+- `createdAt` and `updatedAt` timestamps are automatically added
+- `address.country` defaults to "USA" if not provided
+- Dates can be provided as ISO strings and will be coerced to Date objects

@@ -1,0 +1,532 @@
+// ===========================================
+// STUDENTS DASHBOARD PAGE STYLES
+// Horizontal expandable card layout with gradient
+// ===========================================
+
+@use "@/styles/variables" as *;
+
+// -----------------------------------------
+// PAGE LAYOUT
+// -----------------------------------------
+.page {
+  min-height: 100vh;
+  padding: var(--spacing-6) var(--spacing-8);
+  background: linear-gradient(
+    160deg,
+    var(--color-primary-50) 0%,
+    var(--color-background-default) 40%,
+    var(--color-tertiary-50) 100%
+  );
+
+  @media (max-width: 1024px) {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+
+  @media (max-width: 480px) {
+    padding: var(--spacing-4) var(--spacing-2);
+  }
+}
+
+// -----------------------------------------
+// HEADER
+// -----------------------------------------
+.header {
+  max-width: 1400px;
+  margin: 0 auto var(--spacing-6) auto;
+}
+
+.subtitle {
+  font-family: var(--font-family-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+// -----------------------------------------
+// FLOATING ACTION BUTTON
+// -----------------------------------------
+.fab {
+  position: fixed;
+  bottom: var(--spacing-8);
+  right: var(--spacing-8);
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-500) 0%,
+    var(--color-primary-700) 100%
+  );
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 
+    0 6px 20px rgba(0, 106, 106, 0.4),
+    0 3px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  cursor: pointer;
+
+  @media (max-width: 640px) {
+    bottom: var(--spacing-6);
+    right: var(--spacing-6);
+    width: 56px;
+    height: 56px;
+  }
+}
+
+// -----------------------------------------
+// CONTENT AREA
+// -----------------------------------------
+.content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+// -----------------------------------------
+// STUDENT CARD - Gradient Glass Effect
+// -----------------------------------------
+.card {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(224, 247, 247, 0.9) 100%
+  );
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    0 4px 20px rgba(0, 106, 106, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 187, 187, 0.15);
+  padding: var(--spacing-3) var(--spacing-5);
+  overflow: hidden;
+
+  // Subtle gradient overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--color-primary-400) 0%,
+      var(--color-primary-600) 50%,
+      var(--color-secondary-400) 100%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &.cardExpanded {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.92) 50%,
+      rgba(224, 247, 247, 0.95) 100%
+    );
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: var(--spacing-3);
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-1) 0;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: var(--spacing-2);
+  }
+
+  @media (max-width: 480px) {
+    gap: var(--spacing-1);
+  }
+}
+
+.fieldsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  flex: 1;
+  gap: var(--spacing-6);
+  align-items: center;
+  
+  @media (max-width: 1024px) {
+    gap: var(--spacing-4);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-3);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2);
+  }
+}
+
+
+// -----------------------------------------
+// AVATAR
+// -----------------------------------------
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-500) 0%,
+    var(--color-primary-700) 100%
+  );
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 106, 106, 0.25);
+}
+
+.avatarSpacer {
+  width: 40px;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+// -----------------------------------------
+// FIELD (Label + Value)
+// -----------------------------------------
+.field {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-2);
+  min-width: 0;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+.label {
+  font-family: var(--font-family-primary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-primary-700);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.value {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  word-break: break-word;
+}
+
+
+// -----------------------------------------
+// EXPAND BUTTON
+// -----------------------------------------
+.expandButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: auto;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(224, 247, 247, 0.8) 100%
+  );
+  border: 1px solid rgba(0, 187, 187, 0.2);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 106, 106, 0.1);
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-50) 0%,
+      var(--color-primary-100) 100%
+    );
+    border-color: var(--color-primary-400);
+    box-shadow: 0 4px 12px rgba(0, 187, 187, 0.2);
+    transform: scale(1.05);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.expandButtonSpacer {
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.chevron {
+  color: var(--color-primary-600);
+  transition: transform var(--transition-base);
+}
+
+.chevronExpanded {
+  transform: rotate(180deg);
+}
+
+// -----------------------------------------
+// EXPANDABLE SECTION - Max-height animation
+// -----------------------------------------
+.expandableSection {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.2s ease-out;
+  opacity: 0;
+
+  &.expanded {
+    max-height: 200px;
+    opacity: 1;
+    transition: max-height 0.4s ease-in, opacity 0.3s ease-in;
+  }
+}
+
+.expandableContent {
+  padding-top: var(--spacing-2);
+}
+
+// -----------------------------------------
+// LOADING SKELETON
+// -----------------------------------------
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeletonCard {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(224, 247, 247, 0.8) 100%
+  );
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(0, 187, 187, 0.1);
+  padding: var(--spacing-5) var(--spacing-6);
+  box-shadow: 0 4px 20px rgba(0, 106, 106, 0.06);
+}
+
+.skeletonRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-2) 0;
+}
+
+.skeletonAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-100) 0%,
+    var(--color-primary-200) 50%,
+    var(--color-primary-100) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  flex-shrink: 0;
+}
+
+.skeletonAvatarSpacer {
+  width: 48px;
+  flex-shrink: 0;
+}
+
+.skeletonField {
+  height: 18px;
+  width: 120px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--color-tertiary-100) 0%,
+    var(--color-tertiary-200) 50%,
+    var(--color-tertiary-100) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+
+  &:nth-child(2) {
+    width: 180px;
+  }
+
+  &:nth-child(3) {
+    width: 140px;
+  }
+
+  &:nth-child(4) {
+    width: 200px;
+  }
+}
+
+// -----------------------------------------
+// EMPTY STATE
+// -----------------------------------------
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-4);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(224, 247, 247, 0.9) 100%
+  );
+  border-radius: var(--radius-xl);
+  border: 2px dashed var(--color-primary-200);
+  box-shadow: 0 4px 20px rgba(0, 106, 106, 0.06);
+}
+
+.emptyIcon {
+  color: var(--color-primary-300);
+  margin-bottom: var(--spacing-4);
+}
+
+.emptyTitle {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-2) 0;
+}
+
+.emptyDescription {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-6) 0;
+}
+
+.emptyAction {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
+  background: var(--color-primary-main);
+  color: var(--color-white);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+
+  &:hover {
+    background: var(--color-primary-dark);
+    box-shadow: 0 4px 12px rgba(0, 106, 106, 0.35);
+  }
+}
+
+// -----------------------------------------
+// ERROR STATE
+// -----------------------------------------
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-4);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 243, 224, 0.9) 100%
+  );
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-error);
+}
+
+.errorIcon {
+  color: var(--color-error);
+  margin-bottom: var(--spacing-4);
+}
+
+.errorTitle {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-2) 0;
+}
+
+.errorDescription {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-6) 0;
+  max-width: 400px;
+}
+
+.retryButton {
+  padding: var(--spacing-3) var(--spacing-6);
+  background: transparent;
+  color: var(--color-error);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border: 2px solid var(--color-error);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+
+  &:hover {
+    background: var(--color-error);
+    color: var(--color-white);
+  }
+}
