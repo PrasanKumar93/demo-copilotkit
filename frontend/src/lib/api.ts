@@ -8,13 +8,14 @@ import type {
 
 // API base URL - defaults to localhost:3000 for development
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+const COPILOTKIT_BASE_URL = `${API_BASE_URL}/copilotkit`;
 
 // Custom error class for API errors
 class ApiError extends Error {
   constructor(
     message: string,
     public statusCode: number,
-    public response?: ApiResponse<unknown>
+    public response?: ApiResponse<unknown>,
   ) {
     super(message);
     this.name = "ApiError";
@@ -34,7 +35,7 @@ interface FetchOptions extends Omit<RequestInit, "body"> {
  */
 const fetchApi = async <T>(
   endpoint: string,
-  options: FetchOptions = {}
+  options: FetchOptions = {},
 ): Promise<T> => {
   const { body, headers, ...restOptions } = options;
 
@@ -62,7 +63,7 @@ const fetchApi = async <T>(
       throw new ApiError(
         data.error,
         response.status,
-        data as ApiResponse<unknown>
+        data as ApiResponse<unknown>,
       );
     }
 
@@ -130,6 +131,7 @@ const createStudent = async (student: CreateStudentInput): Promise<Student> => {
 };
 
 export {
+  COPILOTKIT_BASE_URL,
   ApiError,
   fetchApi,
   postApi,

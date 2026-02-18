@@ -11,6 +11,8 @@
     "test:run": "vitest run"
   },
   "dependencies": {
+    "@copilotkit/react-core": "^1.51.4",
+    "@copilotkit/react-ui": "^1.51.4",
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
