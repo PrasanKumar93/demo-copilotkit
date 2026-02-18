@@ -7,7 +7,7 @@ import {
   notFoundHandler,
 } from "./middleware/error.middleware.js";
 import routes from "./routes/index.js";
-import { handleCopilotKit } from "./copilotkit.js";
+import { handleCopilotKit, COPILOTKIT_ENDPOINT } from "./copilotkit.js";
 
 // Create Express app
 const app = express();
@@ -23,7 +23,12 @@ app.use(express.urlencoded({ extended: true }));
 // API routes
 app.use("/api", routes);
 
-app.use("/copilotkit", async (req, res, next) => {
+app.use(COPILOTKIT_ENDPOINT, async (req, res, next) => {
+  // Express sets req.url to the path after the mount ("/" for /copilotkit).
+  // CopilotKit's handler builds the request URL from req.url; its Hono app has basePath(COPILOTKIT_ENDPOINT)
+  // and only matches when the path starts with that. Restore the full path so the handler can route.
+  req.url = COPILOTKIT_ENDPOINT + (req.url === "/" ? "" : req.url);
+
   console.log("[CopilotKit] Incoming request:", {
     method: req.method,
     body: req.body,
@@ -34,9 +39,7 @@ app.use("/copilotkit", async (req, res, next) => {
   });
   try {
     await handleCopilotKit(req, res);
-    console.log("[CopilotKit] Request completed:", req.method, req.originalUrl);
   } catch (err) {
-    console.error("[CopilotKit] Request failed:", err);
     next(err);
   }
 });

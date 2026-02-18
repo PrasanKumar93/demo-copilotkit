@@ -5,6 +5,8 @@ import {
   copilotRuntimeNodeHttpEndpoint,
 } from "@copilotkit/runtime";
 
+export const COPILOTKIT_ENDPOINT = "/copilotkit";
+
 const serviceAdapter = new GoogleGenerativeAIAdapter({
   //  model: "gemini-2.5-flash-lite", //optional
 });
@@ -12,7 +14,7 @@ const serviceAdapter = new GoogleGenerativeAIAdapter({
 async function handleCopilotKit(req: Request, res: Response) {
   const runtime = new CopilotRuntime();
   const copilotHandler = copilotRuntimeNodeHttpEndpoint({
-    endpoint: "/copilotkit",
+    endpoint: COPILOTKIT_ENDPOINT,
     runtime,
     serviceAdapter,
   });

@@ -4,6 +4,7 @@
 
 ```sh
 npm install @copilotkit/runtime
+npm install @langchain/google-gauth
 ```
 
 - create [API key](https://aistudio.google.com/app/api-keys)
@@ -74,7 +75,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body>
         {/* Make sure to use the URL you configured in the previous step  */}
-        <CopilotKit runtimeUrl="http://localhost:3001/api/copilotkit">
+        <CopilotKit runtimeUrl="http://localhost:3001/copilotkit">
           {children}
         </CopilotKit>
       </body>
