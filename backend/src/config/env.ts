@@ -14,6 +14,7 @@ const ENV = {
   MONGODB_URI:
     process.env.MONGODB_URI || "mongodb://localhost:27017/demoNextNodeDb",
   MONGODB_DB_NAME: process.env.MONGODB_DB_NAME || "demoNextNodeDb",
+  GOOGLE_API_KEY: process.env.GOOGLE_API_KEY || "",
 
   // Derived
   IS_PRODUCTION: CURR_NODE_ENV === "production",
