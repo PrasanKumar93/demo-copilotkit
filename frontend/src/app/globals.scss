@@ -45,3 +45,11 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+/* ===========================================
+ * CopilotKit Sidebar
+ * =========================================== */
+/* Copilot bar above app header (header uses z-index: 100) */
+.copilotKitSidebar {
+  z-index: 200 !important;
+}
