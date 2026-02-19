@@ -8,6 +8,9 @@ const CURR_NODE_ENV = process.env.NODE_ENV || "development";
 const ENV = {
   // Server
   PORT: parseInt(process.env.PORT || "3001", 10),
+  LANGGRAPH_DEPLOYMENT_URL:
+    process.env.LANGGRAPH_DEPLOYMENT_URL || "http://localhost:2024",
+  LANGSMITH_API_KEY: process.env.LANGSMITH_API_KEY || "",
   NODE_ENV: CURR_NODE_ENV,
 
   // MongoDB

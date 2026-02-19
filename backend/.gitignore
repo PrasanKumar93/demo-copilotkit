@@ -29,3 +29,6 @@ coverage/
 tmp/
 temp/
 
+
+# LangGraph API
+.langgraph_api

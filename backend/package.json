@@ -6,6 +6,7 @@
     "type": "module",
     "scripts": {
         "dev": "nodemon --exec tsx src/server.ts",
+        "langgraph": "npx @langchain/langgraph-cli dev",
         "build": "tsc",
         "start": "node dist/server.js",
         "test": "vitest",
@@ -25,14 +26,18 @@
     "license": "ISC",
     "dependencies": {
         "@copilotkit/runtime": "^1.51.4",
+        "@google/genai": "^1.42.0",
+        "@langchain/core": "^1.1.26",
+        "@langchain/langgraph": "^1.1.5",
         "cors": "^2.8.5",
         "dotenv": "^16.4.0",
         "express": "^4.21.0",
         "helmet": "^8.0.0",
         "mongodb": "^6.11.0",
-        "zod": "^3.23.8"
+        "zod": "^3.25.76"
     },
     "devDependencies": {
+        "@langchain/langgraph-cli": "^1.1.13",
         "@types/cors": "^2.8.17",
         "@types/express": "^5.0.0",
         "@types/node": "^22.9.0",
@@ -48,5 +53,8 @@
     },
     "engines": {
         "node": ">=18.0.0"
+    },
+    "overrides": {
+        "@ag-ui/client": "0.0.43"
     }
 }

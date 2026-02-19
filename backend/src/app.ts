@@ -7,7 +7,9 @@ import {
   notFoundHandler,
 } from "./middleware/error.middleware.js";
 import routes from "./routes/index.js";
-import { handleCopilotKit, COPILOTKIT_ENDPOINT } from "./copilotkit.js";
+import { handleCopilotKit } from "./copilotkit.js";
+import { COPILOTKIT_ENDPOINT } from "./constants/general.js";
+import { handleCopilotKitLanggraph } from "./agent/copilotkit-langgraph.js";
 
 // Create Express app
 const app = express();
@@ -38,7 +40,13 @@ app.use(COPILOTKIT_ENDPOINT, async (req, res, next) => {
     timestamp: new Date().toISOString(),
   });
   try {
-    await handleCopilotKit(req, res);
+    let test = 2;
+    if (test === 1) {
+      await handleCopilotKit(req, res);
+    } else {
+      await handleCopilotKitLanggraph(req, res);
+    }
+    //await handleCopilotKitLanggraph(req, res);
   } catch (err) {
     next(err);
   }

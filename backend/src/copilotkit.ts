@@ -7,8 +7,7 @@ import type { CopilotServiceAdapter } from "@copilotkit/runtime";
 import { randomUUID } from "@copilotkit/shared";
 
 import { ENV } from "./config/env.js";
-
-export const COPILOTKIT_ENDPOINT = "/copilotkit";
+import { COPILOTKIT_ENDPOINT } from "./constants/general.js";
 
 const DEFAULT_MODEL = "gemini-2.0-flash";
 
