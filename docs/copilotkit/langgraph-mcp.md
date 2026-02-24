@@ -135,6 +135,8 @@ LANGSMITH_TRACING=true
 REDIS_MCP_URL="http://localhost:9050/sse"
 ```
 
+Note: Check langsmith tracing -> default project for logs
+
 ### 7. Session/User Scoping
 
 CopilotKit sends `threadId` and user context. Map these to Redis memory `session_id` and `user_id`:

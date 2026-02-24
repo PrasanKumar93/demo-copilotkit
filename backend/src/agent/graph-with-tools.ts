@@ -36,10 +36,26 @@ const mcpClient = new MultiServerMCPClient({
 
 const tools = await mcpClient.getTools();
 
+const memoryExtractionPrompt = `You have access to Redis Agent Memory MCP tools (set_working_memory, search_long_term_memory, memory_prompt, etc.). Invoke them only via tool calls—never output Python code, pseudo-code, print(...), or raw function syntax. Use the tool-calling mechanism only.
+
+**Retrieval (before answering):** When the user asks a question, first retrieve relevant context. Call memory_prompt (combines working + long-term memories) or search_long_term_memory (semantic search) to fetch prior preferences, facts, and context. Use this to personalize and ground your answers. Do not skip this step—memory retrieval is essential for coherent, context-aware responses.
+
+**Storage (after exchanges):** When storing conversation context via set_working_memory, memories are automatically promoted to long-term storage. To control what gets extracted, use the custom extraction strategy.
+
+For set_working_memory, always pass long_term_memory_strategy with strategy "custom" so we extract technical preferences and skills (programming languages, frameworks, tools) rather than generic facts. The custom_prompt must include the exact placeholders {message} and {current_datetime}—they are substituted by the memory server.
+
+When calling set_working_memory, pass these parameters (as JSON via tool call):
+- session_id: use the actual session/thread id
+- messages: array of {"role": "user"|"assistant", "content": "..."}
+- long_term_memory_strategy: { "strategy": "custom", "config": { "custom_prompt": "Extract technical preferences and skills from: {message}\\n\\nFocus on: programming languages, frameworks, tools.\\nReturn JSON with type, text, topics, entities.\\nCurrent time: {current_datetime}" } }
+
+Output format: memories array with type, text, topics, entities. See Redis Agent Memory docs: https://redis.github.io/agent-memory-server/mcp/`;
+
 // React agent as a subgraph - keeps all same functionalities (tools, MCP, etc.)
 const reactAgentGraph = createReactAgent({
   llm,
   tools,
+  prompt: memoryExtractionPrompt, //optional prompt for better MCP tool memory usage
 });
 
 // React agent as a node - invokes the subgraph and returns new messages
