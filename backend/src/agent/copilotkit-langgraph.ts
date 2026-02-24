@@ -12,8 +12,8 @@ import { COPILOTKIT_ENDPOINT } from "../constants/general.js";
 
 const GRAPHS = {
   // must match langgraph.json key
-  STARTER_AGENT: "starterAgent",
-  GRAPH_WITH_TOOLS: "starterAgentWithTools",
+  STARTER_AGENT: "starterAgent", //gemini with web search
+  GRAPH_WITH_TOOLS: "starterAgentWithTools", // gemini with MCP (Redis Agent Memory)
 };
 
 // CopilotKit runtime + LangGraph agent wiring

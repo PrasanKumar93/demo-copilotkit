@@ -20,7 +20,7 @@ const ENV = {
   GOOGLE_API_KEY: process.env.GOOGLE_API_KEY || "",
 
   // Redis Agent Memory (MCP)
-  REDIS_MCP_URL: process.env.REDIS_MCP_URL || "http://localhost:8000/sse",
+  REDIS_MCP_URL: process.env.REDIS_MCP_URL || "http://localhost:9000/sse",
 
   // Derived
   IS_PRODUCTION: CURR_NODE_ENV === "production",
