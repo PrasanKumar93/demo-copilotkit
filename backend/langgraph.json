@@ -1,7 +1,8 @@
 {
-    "node_version": "20",
-    "graphs": {
-        "starterAgent": "./src/agent/graph.ts:compiledGraph"
-    },
-    "env": ".env"
+  "node_version": "20",
+  "graphs": {
+    "starterAgent": "./src/agent/graph.ts:compiledGraph",
+    "starterAgentWithTools": "./src/agent/graph-with-tools.ts:compiledGraph"
+  },
+  "env": ".env"
 }

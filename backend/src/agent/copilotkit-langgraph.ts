@@ -10,12 +10,18 @@ import { LangGraphAgent } from "@copilotkit/runtime/langgraph";
 import { ENV } from "../config/env.js";
 import { COPILOTKIT_ENDPOINT } from "../constants/general.js";
 
+const GRAPHS = {
+  // must match langgraph.json key
+  STARTER_AGENT: "starterAgent",
+  GRAPH_WITH_TOOLS: "starterAgentWithTools",
+};
+
 // CopilotKit runtime + LangGraph agent wiring
 const serviceAdapter = new ExperimentalEmptyAdapter();
 
 const langGraphAgentConfig = {
   deploymentUrl: ENV.LANGGRAPH_DEPLOYMENT_URL || "",
-  graphId: "starterAgent", // must match langgraph.json key
+  graphId: GRAPHS.GRAPH_WITH_TOOLS,
   langsmithApiKey: ENV.LANGSMITH_API_KEY || "",
 };
 

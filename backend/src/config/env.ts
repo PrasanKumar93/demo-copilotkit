@@ -19,6 +19,9 @@ const ENV = {
   MONGODB_DB_NAME: process.env.MONGODB_DB_NAME || "demoNextNodeDb",
   GOOGLE_API_KEY: process.env.GOOGLE_API_KEY || "",
 
+  // Redis Agent Memory (MCP)
+  REDIS_MCP_URL: process.env.REDIS_MCP_URL || "http://localhost:8000/sse",
+
   // Derived
   IS_PRODUCTION: CURR_NODE_ENV === "production",
   IS_DEVELOPMENT: CURR_NODE_ENV === "development",

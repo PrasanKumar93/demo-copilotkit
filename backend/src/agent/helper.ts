@@ -36,4 +36,4 @@ function getLastUserText(messages: BaseMessage[]): string {
   return lastHuman ? getMessageText(lastHuman as BaseMessage) : "Hello!";
 }
 
-export { getLastUserText };
+export { getLastUserText, getMessageText };
